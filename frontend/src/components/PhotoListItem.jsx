@@ -4,13 +4,14 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   /* Insert React */
+  const sampleData = props.sampleDataForPhotoListItem;
   return (
-    <div id={props.sampleDataForPhotoListItem.id}>
-      <img src={props.sampleDataForPhotoListItem.imageSource} alt="Main" className="main-image" />
-      <img src={props.sampleDataForPhotoListItem.profile} alt="Profile" className="profile-image" />
-      <div className="username">{props.sampleDataForPhotoListItem.username}</div>
+    <div id={sampleData.id}>
+      <img src={sampleData.imageSource} alt="Main" className="main-image" />
+      <img src={sampleData.profile} alt="Profile" className="profile-image" />
+      <div className="username">{sampleData.username}</div>
       <div className="location">
-        {props.sampleDataForPhotoListItem.location.city}, {props.sampleDataForPhotoListItem.location.country}
+        {sampleData.location.city}, {sampleData.location.country}
       </div>
     </div>
   );
