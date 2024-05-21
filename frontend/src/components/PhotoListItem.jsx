@@ -7,17 +7,17 @@ const PhotoListItem = (props) => {
   
   
   /* Insert React */
-  const sampleData = props.photo;
+  const photo = props.photo;
   return (
-    <div id={sampleData.id} className="photo-list__item">
+    <div id={photo.id} className="photo-list__item">
       <PhotoFavButton/>
-      <img src={sampleData.imageSource} alt="Main" className="photo-list__image" />
+      <img src={photo.urls.regular} alt="Main" className="photo-list__image" />
         <div className="photo-list__user-details">
-          <img src={sampleData.profile} alt="Profile" className="photo-list__user-profile" />
+          <img src={photo.user.profile} alt="Profile" className="photo-list__user-profile" />
           <div className="photo-list__user-info">
-            {sampleData.username}
+            {photo.user.name}
             <div className="photo-list__user-location">
-            {sampleData.location.city}, {sampleData.location.country}
+            {photo.location.city}, {photo.location.country}
             </div>
           </div>
           
