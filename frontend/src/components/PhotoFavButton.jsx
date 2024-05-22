@@ -3,11 +3,12 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+function PhotoFavButton({handleFav}) {
   const [selected, setSelected] = useState(false);
 
   const handleClick = () => {
     setSelected(prev => !prev);
+    handleFav();
   };
 
   return (
