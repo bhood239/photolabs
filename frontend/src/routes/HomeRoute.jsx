@@ -7,15 +7,22 @@ import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = ({ photos, topics }) => {
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
-  const handleFav = () => {
-    setFavorite(true);
+  const handleFav = (id) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.includes(id)) {
+        return prevFavorites.filter(favId => favId !== id);
+      } else {
+        return [...prevFavorites, id];
+      }
+    });
+    console.log(favorites);
   }
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavPhotoExist={favorite} />
+      <TopNavigation topics={topics} isFavPhotoExist={favorites} />
       <PhotoList photos={photos} handleFav={handleFav}/>
     </div>
   );

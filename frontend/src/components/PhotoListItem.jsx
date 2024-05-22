@@ -7,7 +7,7 @@ const PhotoListItem = ({photo, handleFav}) => {
   
   return (
     <div id={photo.id} className="photo-list__item">
-      <PhotoFavButton handleFav={handleFav}/>
+      <PhotoFavButton handleFav={handleFav} id={photo.id}/>
       <img src={photo.urls.regular} alt="Main" className="photo-list__image" />
         <div className="photo-list__user-details">
           <img src={photo.user.profile} alt="Profile" className="photo-list__user-profile" />
