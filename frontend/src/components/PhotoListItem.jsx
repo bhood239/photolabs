@@ -5,9 +5,8 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   
-  
-  /* Insert React */
   const photo = props.photo;
+  
   return (
     <div id={photo.id} className="photo-list__item">
       <PhotoFavButton/>
@@ -20,7 +19,6 @@ const PhotoListItem = (props) => {
             {photo.location.city}, {photo.location.country}
             </div>
           </div>
-          
         </div>
     </div>
   );
