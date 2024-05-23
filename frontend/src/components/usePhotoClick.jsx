@@ -8,7 +8,7 @@ const usePhotoClick = () => {
     console.log("photo selected");
   }
 
-  return {photoSelected, handlePhotoClick};
+  return {photoSelected, handlePhotoClick, setPhotoSelected};
 }
 
 export default usePhotoClick;

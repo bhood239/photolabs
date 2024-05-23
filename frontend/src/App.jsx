@@ -11,12 +11,12 @@ import usePhotoClick from 'components/usePhotoClick';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const { photoSelected, handlePhotoClick } = usePhotoClick();
+  const { photoSelected, handlePhotoClick, setPhotoSelected } = usePhotoClick();
 
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} handlePhotoClick={handlePhotoClick}/>
-      {photoSelected === true && <PhotoDetailsModal />}
+      {photoSelected === true && <PhotoDetailsModal setPhotoSelected={setPhotoSelected} />}
     </div>
   );
 };
