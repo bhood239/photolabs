@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-const TopicList = ({ topics }) => {
+const TopicList = ({ onLoadTopic, topics }) => {
+  useEffect(() => {
+    onLoadTopic();
+  }, [onLoadTopic]);
 
   return (
     <div className="top-nav-bar__topic-list">

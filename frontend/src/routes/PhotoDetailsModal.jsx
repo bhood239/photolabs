@@ -5,16 +5,16 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({setPhotoSelected, photoSelected, handleFav, favorites, handlePhotoClick}) => {
+const PhotoDetailsModal = ({onClosePhotoDetailsModal, photoSelected, onPhotoSelect, updateToFavPhotoIds, favorites}) => {
   console.log(photoSelected);
   const similarPhotosArray = Object.values(photoSelected.similar_photos);
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={()=>{setPhotoSelected(null)}} >
+      <button className="photo-details-modal__close-button" onClick={()=>{onClosePhotoDetailsModal()}} >
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <PhotoFavButton handleFav={handleFav} id={photoSelected.id} favorites={favorites} />
+      <PhotoFavButton updateToFavPhotoIds={updateToFavPhotoIds} id={photoSelected.id} favorites={favorites} />
       <img src={photoSelected.urls.full} alt="Main" className="photo-details-modal__image" />
         <div className='photo-details-modal__header' >
           <div className="photo-details-modal__photographer-details">
@@ -28,7 +28,7 @@ const PhotoDetailsModal = ({setPhotoSelected, photoSelected, handleFav, favorite
           </div>
         </div>
       
-      <PhotoList className="photo-details-modal__images" photos={similarPhotosArray} handleFav={handleFav} favorites={favorites} handlePhotoClick={handlePhotoClick} />
+      <PhotoList className="photo-details-modal__images" photos={similarPhotosArray} updateToFavPhotoIds={updateToFavPhotoIds} favorites={favorites} onPhotoSelect={onPhotoSelect}  />
     </div>
   )
 };
