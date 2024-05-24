@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} handlePhotoClick={handlePhotoClick}/>
-      {photoSelected === true && <PhotoDetailsModal setPhotoSelected={setPhotoSelected} />}
+      {photoSelected !== null && <PhotoDetailsModal setPhotoSelected={setPhotoSelected} />}
     </div>
   );
 };
