@@ -7,6 +7,8 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({setPhotoSelected, photoSelected, photos, handleFav, favorites, handlePhotoClick}) => {
   console.log(photoSelected);
+  const similarPhotosArray = Object.values(photoSelected.similar_photos);
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={()=>{setPhotoSelected(null)}} >
@@ -26,7 +28,7 @@ const PhotoDetailsModal = ({setPhotoSelected, photoSelected, photos, handleFav, 
           </div>
         </div>
       
-      <PhotoList className="photo-details-modal__images" photos={photos} handleFav={handleFav} favorites={favorites} handlePhotoClick={handlePhotoClick} />
+      <PhotoList className="photo-details-modal__images" photos={similarPhotosArray} handleFav={handleFav} favorites={favorites} handlePhotoClick={handlePhotoClick} />
     </div>
   )
 };
