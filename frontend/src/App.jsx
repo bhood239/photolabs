@@ -5,7 +5,7 @@ import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from 'components/useApplicationData';
+import useApplicationData from 'hooks/useApplicationData';
 
 
 // Note: Rendering a single component to build components in isolation

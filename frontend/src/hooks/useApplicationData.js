@@ -1,6 +1,6 @@
 import { useState } from "react";
 import topics from 'mocks/topics';
-import TopicListItem from "./TopicListItem";
+import TopicListItem from "../components/TopicListItem";
 
 const useApplicationData = () => {
 
