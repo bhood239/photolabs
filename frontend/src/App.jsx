@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} handlePhotoClick={handlePhotoClick} favorites={favorites} handleFav={handleFav}/>
-      {photoSelected !== null && <PhotoDetailsModal setPhotoSelected={setPhotoSelected} photoSelected={photoSelected} photos={photos} favorites={favorites} handleFav={handleFav} handlePhotoClick={handlePhotoClick} />}
+      {photoSelected !== null && <PhotoDetailsModal setPhotoSelected={setPhotoSelected} photoSelected={photoSelected} favorites={favorites} handleFav={handleFav} handlePhotoClick={handlePhotoClick} />}
     </div>
   );
 };
