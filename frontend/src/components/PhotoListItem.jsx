@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = ({photo, handleFav, favorites, handlePhotoClick}) => {
   
   return (
-    <div id={photo.id} className="photo-list__item" onClick={handlePhotoClick}>
+    <div id={photo.id} className="photo-list__item" onClick={() => {handlePhotoClick(photo)}}>
       <PhotoFavButton handleFav={handleFav} id={photo.id} favorites={favorites} />
       <img src={photo.urls.regular} alt="Main" className="photo-list__image" />
         <div className="photo-list__user-details">

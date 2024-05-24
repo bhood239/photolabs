@@ -3,9 +3,9 @@ import { useState } from "react";
 const usePhotoClick = () => {
   const [photoSelected, setPhotoSelected] = useState(false);
 
-  const handlePhotoClick = () => {
+  const handlePhotoClick = (photo) => {
     setPhotoSelected(true);
-    console.log("photo selected");
+    console.log(photo);
   }
 
   return {photoSelected, handlePhotoClick, setPhotoSelected};
