@@ -8,7 +8,6 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
 
   const {
@@ -16,13 +15,10 @@ const App = () => {
     onPhotoSelect,
     favorites,
     updateToFavPhotoIds,
+    loadedTopics,
     onLoadTopic,
-    onClosePhotoDetailsModal,
+    onClosePhotoDetailsModal
   } = useApplicationData();
-
-  useEffect(() => {
-    onLoadTopic();
-  }, []);
 
   return (
     <div className="App">
@@ -33,6 +29,7 @@ const App = () => {
       onPhotoSelect={onPhotoSelect} 
       favorites={favorites} 
       updateToFavPhotoIds={updateToFavPhotoIds}
+      loadedTopics={loadedTopics}
       />
       {photoSelected !== null && 
       <PhotoDetailsModal 
