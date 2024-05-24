@@ -4,20 +4,9 @@ import { useState } from 'react';
 import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
+import useFavorite from 'components/useFavorite';
 
-const HomeRoute = ({ photos, topics, handlePhotoClick }) => {
-
-  const [favorites, setFavorites] = useState([]);
-
-  const handleFav = (id) => {
-    setFavorites((prevFavorites) => {
-      if (prevFavorites.includes(id)) {
-        return prevFavorites.filter(favId => favId !== id);
-      } else {
-        return [...prevFavorites, id];
-      }
-    });
-  }
+const HomeRoute = ({ photos, topics, handlePhotoClick, favorites, handleFav }) => {
 
   return (
     <div className="home-route">

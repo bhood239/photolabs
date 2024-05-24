@@ -5,7 +5,6 @@ const usePhotoClick = () => {
 
   const handlePhotoClick = (photo) => {
     setPhotoSelected(photo);
-    console.log(photo);
   }
 
   return {photoSelected, handlePhotoClick, setPhotoSelected};
