@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react';
-
 import './App.scss';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 
 const App = () => {
+  
 
   const {
+    photoData,
     photoSelected,
     onPhotoSelect,
     favorites,
@@ -23,9 +21,9 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute 
-      photos={photos} 
+      photos={photoData} 
       onLoadTopic={onLoadTopic} 
-      topics={topics}
+      topics={loadedTopics}
       onPhotoSelect={onPhotoSelect} 
       favorites={favorites} 
       updateToFavPhotoIds={updateToFavPhotoIds}

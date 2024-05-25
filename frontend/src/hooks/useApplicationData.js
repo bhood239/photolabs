@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useEffect } from "react";
 import topics from 'mocks/topics';
 
 export const ACTIONS = {
@@ -13,8 +13,10 @@ export const ACTIONS = {
 const initialState = {
   photoSelected: null,
   favorites: [],
-  loadedTopics: []
+  topicData: [],
+  photoData: []
 };
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -28,10 +30,15 @@ const reducer = (state, action) => {
         ...state,
         favorites: state.favorites.filter(id => id !== action.payload)
       };
+    case ACTIONS.SET_PHOTO_DATA:
+      return {
+        ...state,
+        photoData: action.payload
+      };
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
-        loadedTopics: action.payload
+        topicData: action.payload
       };
     case ACTIONS.SELECT_PHOTO:
       return {
@@ -50,6 +57,19 @@ const reducer = (state, action) => {
 
 
 const useApplicationData = () => {
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data}));
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/topics')
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data}));
+  }, []);
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const onPhotoSelect = (photo) => {
@@ -73,11 +93,12 @@ const useApplicationData = () => {
   };
 
   return {
+    photoData: state.photoData,
     photoSelected: state.photoSelected,
     onPhotoSelect,
     favorites: state.favorites,
     updateToFavPhotoIds,
-    loadedTopics: state.loadedTopics,
+    loadedTopics: state.topicData,
     onLoadTopic,
     onClosePhotoDetailsModal
   };
