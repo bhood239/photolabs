@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -15,7 +17,8 @@ const App = () => {
     updateToFavPhotoIds,
     loadedTopics,
     onLoadTopic,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
+    loadPhotoByTopic
   } = useApplicationData();
 
   return (
@@ -28,6 +31,7 @@ const App = () => {
       favorites={favorites} 
       updateToFavPhotoIds={updateToFavPhotoIds}
       loadedTopics={loadedTopics}
+      loadPhotosByTopic={loadPhotoByTopic}
       />
       {photoSelected !== null && 
       <PhotoDetailsModal 
