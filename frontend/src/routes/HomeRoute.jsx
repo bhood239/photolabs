@@ -5,11 +5,11 @@ import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
-const HomeRoute = ({ photos, onLoadTopic, loadedTopics, onPhotoSelect, favorites, updateToFavPhotoIds, loadPhotosByTopic }) => {
+const HomeRoute = ({ photos, onLoadTopic, loadedTopics, onPhotoSelect, favorites, updateToFavPhotoIds, setTopicId }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation onLoadTopic={onLoadTopic} loadedTopics={loadedTopics} isFavPhotoExist={favorites.length > 0} loadPhotosByTopic={loadPhotosByTopic} />
+      <TopNavigation onLoadTopic={onLoadTopic} loadedTopics={loadedTopics} isFavPhotoExist={favorites.length > 0} setTopicId={setTopicId} />
       <PhotoList photos={photos} updateToFavPhotoIds={updateToFavPhotoIds} favorites={favorites} onPhotoSelect={onPhotoSelect} />
     </div>
   );

@@ -18,7 +18,7 @@ const App = () => {
     loadedTopics,
     onLoadTopic,
     onClosePhotoDetailsModal,
-    loadPhotoByTopic
+    setTopicId
   } = useApplicationData();
 
   return (
@@ -31,7 +31,7 @@ const App = () => {
       favorites={favorites} 
       updateToFavPhotoIds={updateToFavPhotoIds}
       loadedTopics={loadedTopics}
-      loadPhotosByTopic={loadPhotoByTopic}
+      setTopicId={setTopicId}
       />
       {photoSelected !== null && 
       <PhotoDetailsModal 

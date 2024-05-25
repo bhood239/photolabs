@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+import axios from "axios";
 import topics from 'mocks/topics';
 
 export const ACTIONS = {
@@ -8,14 +9,16 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
-  SET_PHOTOS_BY_TOPICS: 'SET_PHOTOS_BY_TOPICS'
+  SET_PHOTOS_BY_TOPICS: 'SET_PHOTOS_BY_TOPICS',
+  SET_TOPIC_ID: 'SET_TOPIC_ID'
 }
 
 const initialState = {
   photoSelected: null,
   favorites: [],
   topicData: [],
-  photoData: []
+  photoData: [],
+  topicId: undefined
 };
 
 
@@ -49,12 +52,17 @@ const reducer = (state, action) => {
     case ACTIONS.SELECT_PHOTO:
       return {
         ...state,
-        photoSelected: action.payload
+        photoSelected: state.photoData.find(photo => photo.id === action.payload.id)
       };
     case ACTIONS.CLOSE_PHOTO_DETAILS:
       return {
         ...state,
         photoSelected: null
+      };
+    case ACTIONS.SET_TOPIC_ID:
+      return {
+        ...state,
+        topicId: action.payload
       };
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
@@ -64,28 +72,32 @@ const reducer = (state, action) => {
 
 const useApplicationData = () => {
 
-  useEffect(() => {
-    fetch('http://localhost:8001/api/photos')
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data}))
-      .catch(err => console.log(err));
-  }, []);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const loadPhotoByTopic = (topicId) => {
-    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.SET_PHOTOS_BY_TOPICS, payload: data }))
+  useEffect(() => {
+    if (state.topicId) {
+      axios
+      .get(`http://localhost:8001/api/topics/photos/${state.topicId}`)
+      .then(res => dispatch({ type: ACTIONS.SET_PHOTOS_BY_TOPICS, payload: res.data }))
+      .catch(err => console.log(err))
+    } else {
+      axios
+      .get('http://localhost:8001/api/photos')
+      .then(res => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data}))
       .catch(err => console.log(err));
+    }
+  }, [state.topicId]);
+  
+  const setTopicId = (id) => {
+    dispatch({ type: ACTIONS.SET_TOPIC_ID, payload: id });
   };
 
   useEffect(() => {
-    fetch('http://localhost:8001/api/topics')
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data}))
-      .catch(err => console.log(err));
+    axios
+    .get('http://localhost:8001/api/topics')
+    .then(res => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: res.data}))
+    .catch(err => console.log(err));
   }, []);
-
-  const [state, dispatch] = useReducer(reducer, initialState);
 
   const onPhotoSelect = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
@@ -116,7 +128,7 @@ const useApplicationData = () => {
     loadedTopics: state.topicData,
     onLoadTopic,
     onClosePhotoDetailsModal,
-    loadPhotoByTopic
+    setTopicId
   };
 };
 

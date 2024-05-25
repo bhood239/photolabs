@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 
 import "../styles/TopicListItem.scss";
 
-const TopicListItem = ({data, loadPhotosByTopic}) => {
+const TopicListItem = ({data, setTopicId}) => {
 
   const handleClick = () => {
-    loadPhotosByTopic(data.id);
+    setTopicId(data.id);
   }
 
   return (
