@@ -74,17 +74,18 @@ const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // GET photos by topic if topic is selected || GET all photos
   useEffect(() => {
     if (state.topicId) {
       axios
       .get(`http://localhost:8001/api/topics/photos/${state.topicId}`)
       .then(res => dispatch({ type: ACTIONS.SET_PHOTOS_BY_TOPICS, payload: res.data }))
-      .catch(err => console.log(err))
+      .catch(err => console.log('error:', err.message))
     } else {
       axios
       .get('http://localhost:8001/api/photos')
       .then(res => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data}))
-      .catch(err => console.log(err));
+      .catch(err => console.log('error:', err.message));
     }
   }, [state.topicId]);
   
@@ -92,11 +93,12 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_TOPIC_ID, payload: id });
   };
 
+  // GET topics
   useEffect(() => {
     axios
     .get('http://localhost:8001/api/topics')
     .then(res => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: res.data}))
-    .catch(err => console.log(err));
+    .catch(err => console.log('error:', err.message));
   }, []);
 
   const onPhotoSelect = (photo) => {

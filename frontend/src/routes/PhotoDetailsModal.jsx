@@ -12,7 +12,6 @@ const PhotoDetailsModal = ({
   updateToFavPhotoIds,
   favorites,
 }) => {
-  console.log(photoSelected);
   const similarPhotosArray = Object.values(photoSelected.similar_photos);
 
   return (
