@@ -75,8 +75,6 @@ Once the development server is running, you can access the application in your w
 
 ## Screenshots
 
-_Add screenshots of your application here._
-
 Example:
 
 ![Home Page](frontend/public/home-page-screenshot.png)
