@@ -1,16 +1,33 @@
-import React from 'react';
+import React from "react";
 
-import { useState } from 'react';
-import '../styles/HomeRoute.scss';
-import PhotoList from 'components/PhotoList';
-import TopNavigation from 'components/TopNavigationBar';
+import { useState } from "react";
+import "../styles/HomeRoute.scss";
+import PhotoList from "components/PhotoList";
+import TopNavigation from "components/TopNavigationBar";
 
-const HomeRoute = ({ photos, onLoadTopic, loadedTopics, onPhotoSelect, favorites, updateToFavPhotoIds, setTopicId }) => {
-
+const HomeRoute = ({
+  photos,
+  onLoadTopic,
+  loadedTopics,
+  onPhotoSelect,
+  favorites,
+  updateToFavPhotoIds,
+  setTopicId,
+}) => {
   return (
     <div className="home-route">
-      <TopNavigation onLoadTopic={onLoadTopic} loadedTopics={loadedTopics} isFavPhotoExist={favorites.length > 0} setTopicId={setTopicId} />
-      <PhotoList photos={photos} updateToFavPhotoIds={updateToFavPhotoIds} favorites={favorites} onPhotoSelect={onPhotoSelect} />
+      <TopNavigation
+        onLoadTopic={onLoadTopic}
+        loadedTopics={loadedTopics}
+        isFavPhotoExist={favorites.length > 0}
+        setTopicId={setTopicId}
+      />
+      <PhotoList
+        photos={photos}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        favorites={favorites}
+        onPhotoSelect={onPhotoSelect}
+      />
     </div>
   );
 };

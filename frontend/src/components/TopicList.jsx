@@ -10,11 +10,11 @@ const TopicList = ({ onLoadTopic, loadedTopics, setTopicId }) => {
 
   return (
     <div className="top-nav-bar__topic-list">
-        {loadedTopics.map((data) => (
-          <div key={data.id}>
-            <TopicListItem data={data} setTopicId={setTopicId}/>
-          </div>
-        ))}
+      {loadedTopics.map((data) => (
+        <div key={data.id}>
+          <TopicListItem data={data} setTopicId={setTopicId} />
+        </div>
+      ))}
     </div>
   );
 };

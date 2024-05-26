@@ -1,15 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import FavIcon from './FavIcon';
-import '../styles/PhotoFavButton.scss';
+import FavIcon from "./FavIcon";
+import "../styles/PhotoFavButton.scss";
 
-function PhotoFavButton({updateToFavPhotoIds, id, favorites}) {
+function PhotoFavButton({ updateToFavPhotoIds, id, favorites }) {
   const selected = favorites.includes(id);
 
   return (
-    <div className="photo-list__fav-icon" onClick={() => {updateToFavPhotoIds(id)}}>
+    <div
+      className="photo-list__fav-icon"
+      onClick={() => {
+        updateToFavPhotoIds(id);
+      }}
+    >
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={selected}/>
+        <FavIcon selected={selected} />
       </div>
     </div>
   );

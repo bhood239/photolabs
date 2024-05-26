@@ -1,14 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import './App.scss';
-import HomeRoute from 'routes/HomeRoute';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from 'hooks/useApplicationData';
-
+import "./App.scss";
+import HomeRoute from "routes/HomeRoute";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
+import useApplicationData from "hooks/useApplicationData";
 
 const App = () => {
-  
-
   const {
     photoData,
     photoSelected,
@@ -18,30 +15,30 @@ const App = () => {
     loadedTopics,
     onLoadTopic,
     onClosePhotoDetailsModal,
-    setTopicId
+    setTopicId,
   } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute 
-      photos={photoData} 
-      onLoadTopic={onLoadTopic} 
-      topics={loadedTopics}
-      onPhotoSelect={onPhotoSelect} 
-      favorites={favorites} 
-      updateToFavPhotoIds={updateToFavPhotoIds}
-      loadedTopics={loadedTopics}
-      setTopicId={setTopicId}
+      <HomeRoute
+        photos={photoData}
+        onLoadTopic={onLoadTopic}
+        topics={loadedTopics}
+        onPhotoSelect={onPhotoSelect}
+        favorites={favorites}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        loadedTopics={loadedTopics}
+        setTopicId={setTopicId}
       />
-      {photoSelected !== null && 
-      <PhotoDetailsModal 
-      onClosePhotoDetailsModal={onClosePhotoDetailsModal} 
-      photoSelected={photoSelected} 
-      onPhotoSelect={onPhotoSelect} 
-      favorites={favorites} 
-      updateToFavPhotoIds={updateToFavPhotoIds} 
-      />
-      }
+      {photoSelected !== null && (
+        <PhotoDetailsModal
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+          photoSelected={photoSelected}
+          onPhotoSelect={onPhotoSelect}
+          favorites={favorites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+        />
+      )}
     </div>
   );
 };
