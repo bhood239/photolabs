@@ -1,29 +1,3 @@
-# react-photolabs
-
-The PhotoLabs project for the Web Development React course programming.
-
-# Photolabs
-
-## Setup
-
-Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
-
-## [Frontend] Running Webpack Development Server
-
-```sh
-cd frontend
-npm start
-```
-
-## [Backend] Running Backend Server
-
-Read `backend/readme` for further setup details.
-
-```sh
-cd backend
-npm start
-```
-
 # PhotoLabs
 
 PhotoLabs is a web application that allows users to explore and manage a collection of photos by various topics. Users can view photo details, add photos to their favorites, and filter photos by topics.
@@ -77,10 +51,14 @@ To run PhotoLabs locally, follow these steps:
    - Create a `.env` file in the root of the project.
    - Add your environment variables (e.g., API endpoints) to the `.env` file.
 5. **Start the development servers from frontend and backend directories in seperate console windows:**
+
    ```bash
    cd frontend
    npm start
    ```
+
+   Read `backend/readme` for further setup details.
+
    ```bash
    cd backend
    npm start
