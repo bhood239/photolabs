@@ -9,7 +9,8 @@ function PhotoFavButton({ updateToFavPhotoIds, id, favorites }) {
   return (
     <div
       className="photo-list__fav-icon"
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
         updateToFavPhotoIds(id);
       }}
     >

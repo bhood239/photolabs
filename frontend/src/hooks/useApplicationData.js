@@ -78,12 +78,12 @@ const useApplicationData = () => {
   useEffect(() => {
     if (state.topicId) {
       axios
-      .get(`http://localhost:8001/api/topics/photos/${state.topicId}`)
+      .get(`/api/topics/photos/${state.topicId}`)
       .then(res => dispatch({ type: ACTIONS.SET_PHOTOS_BY_TOPICS, payload: res.data }))
       .catch(err => console.log('error:', err.message))
     } else {
       axios
-      .get('http://localhost:8001/api/photos')
+      .get('/api/photos')
       .then(res => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data}))
       .catch(err => console.log('error:', err.message));
     }
@@ -96,7 +96,7 @@ const useApplicationData = () => {
   // GET topics
   useEffect(() => {
     axios
-    .get('http://localhost:8001/api/topics')
+    .get('/api/topics')
     .then(res => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: res.data}))
     .catch(err => console.log('error:', err.message));
   }, []);
