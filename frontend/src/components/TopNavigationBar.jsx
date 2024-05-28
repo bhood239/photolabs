@@ -9,6 +9,7 @@ const TopNavigation = ({
   loadedTopics,
   isFavPhotoExist,
   setTopicId,
+  setFavoriteClicked,
 }) => {
   return (
     <div className="top-nav-bar">
@@ -25,7 +26,13 @@ const TopNavigation = ({
         loadedTopics={loadedTopics}
         setTopicId={setTopicId}
       />
-      <FavBadge isFavPhotoExist={isFavPhotoExist} />
+      <div
+        onClick={() => {
+          setFavoriteClicked(true);
+        }}
+      >
+        <FavBadge isFavPhotoExist={isFavPhotoExist} />
+      </div>
     </div>
   );
 };

@@ -13,6 +13,7 @@ const HomeRoute = ({
   favorites,
   updateToFavPhotoIds,
   setTopicId,
+  setFavoriteClicked,
 }) => {
   return (
     <div className="home-route">
@@ -21,6 +22,7 @@ const HomeRoute = ({
         loadedTopics={loadedTopics}
         isFavPhotoExist={favorites.length > 0}
         setTopicId={setTopicId}
+        setFavoriteClicked={setFavoriteClicked}
       />
       <PhotoList
         photos={photos}
