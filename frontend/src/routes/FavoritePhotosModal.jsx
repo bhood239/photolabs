@@ -3,15 +3,13 @@ import React from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
-import PhotoFavButton from "components/PhotoFavButton";
 
 const FavoritePhotosModal = ({
-  onClosePhotoDetailsModal,
   onPhotoSelect,
   updateToFavPhotoIds,
   favorites,
   photos,
-  setFavoriteClicked,
+  onFavoriteClicked,
 }) => {
   const favoritePhotos = photos.filter((photo) => favorites.includes(photo.id));
 
@@ -20,7 +18,7 @@ const FavoritePhotosModal = ({
       <button
         className="photo-details-modal__close-button"
         onClick={() => {
-          setFavoriteClicked(false);
+          onFavoriteClicked();
         }}
       >
         <img src={closeSymbol} alt="close symbol" />

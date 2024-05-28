@@ -1,6 +1,5 @@
 import React from "react";
 
-import { useState } from "react";
 import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
 import TopNavigation from "components/TopNavigationBar";
@@ -13,7 +12,7 @@ const HomeRoute = ({
   favorites,
   updateToFavPhotoIds,
   setTopicId,
-  setFavoriteClicked,
+  onFavoriteClicked,
 }) => {
   return (
     <div className="home-route">
@@ -22,7 +21,7 @@ const HomeRoute = ({
         loadedTopics={loadedTopics}
         isFavPhotoExist={favorites.length > 0}
         setTopicId={setTopicId}
-        setFavoriteClicked={setFavoriteClicked}
+        onFavoriteClicked={onFavoriteClicked}
       />
       <PhotoList
         photos={photos}

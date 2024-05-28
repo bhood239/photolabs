@@ -17,9 +17,9 @@ const App = () => {
     onLoadTopic,
     onClosePhotoDetailsModal,
     setTopicId,
+    onFavoriteClicked,
+    favoriteClicked,
   } = useApplicationData();
-
-  const [favoriteClicked, setFavoriteClicked] = useState(false);
 
   return (
     <div className="App">
@@ -32,7 +32,7 @@ const App = () => {
         updateToFavPhotoIds={updateToFavPhotoIds}
         loadedTopics={loadedTopics}
         setTopicId={setTopicId}
-        setFavoriteClicked={setFavoriteClicked}
+        onFavoriteClicked={onFavoriteClicked}
       />
       {photoSelected !== null && (
         <PhotoDetailsModal
@@ -51,7 +51,7 @@ const App = () => {
           favorites={favorites}
           updateToFavPhotoIds={updateToFavPhotoIds}
           photos={photoData}
-          setFavoriteClicked={setFavoriteClicked}
+          onFavoriteClicked={onFavoriteClicked}
         />
       )}
     </div>
