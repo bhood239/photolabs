@@ -10,7 +10,8 @@ export const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   SET_PHOTOS_BY_TOPICS: 'SET_PHOTOS_BY_TOPICS',
-  SET_TOPIC_ID: 'SET_TOPIC_ID'
+  SET_TOPIC_ID: 'SET_TOPIC_ID',
+  SET_FAVORITE_CLICKED: 'SET_FAVORITE_CLICKED'
 }
 
 const initialState = {
@@ -18,7 +19,8 @@ const initialState = {
   favorites: [],
   topicData: [],
   photoData: [],
-  topicId: undefined
+  topicId: undefined,
+  favoriteClicked: false
 };
 
 
@@ -64,6 +66,11 @@ const reducer = (state, action) => {
         ...state,
         topicId: action.payload
       };
+      case ACTIONS.SET_FAVORITE_CLICKED:
+      return {
+        ...state,
+        favoriteClicked: action.payload
+      };
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
   }
@@ -105,6 +112,14 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
 
+  const onFavoriteClicked = () => {
+    if (state.favoriteClicked === false) {
+      dispatch({ type: ACTIONS.SET_FAVORITE_CLICKED, payload: true });
+    } else {
+      dispatch({ type: ACTIONS.SET_FAVORITE_CLICKED, payload: false });
+    }
+  };
+
   const updateToFavPhotoIds = (id) => {
     if (state.favorites.includes(id)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: id });
@@ -130,7 +145,9 @@ const useApplicationData = () => {
     loadedTopics: state.topicData,
     onLoadTopic,
     onClosePhotoDetailsModal,
-    setTopicId
+    setTopicId,
+    onFavoriteClicked,
+    favoriteClicked: state.favoriteClicked
   };
 };
 

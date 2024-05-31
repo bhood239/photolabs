@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
+import FavoritePhotosModal from "routes/FavoritePhotosModal";
 
 const App = () => {
   const {
@@ -16,6 +17,8 @@ const App = () => {
     onLoadTopic,
     onClosePhotoDetailsModal,
     setTopicId,
+    onFavoriteClicked,
+    favoriteClicked,
   } = useApplicationData();
 
   return (
@@ -29,6 +32,7 @@ const App = () => {
         updateToFavPhotoIds={updateToFavPhotoIds}
         loadedTopics={loadedTopics}
         setTopicId={setTopicId}
+        onFavoriteClicked={onFavoriteClicked}
       />
       {photoSelected !== null && (
         <PhotoDetailsModal
@@ -37,6 +41,17 @@ const App = () => {
           onPhotoSelect={onPhotoSelect}
           favorites={favorites}
           updateToFavPhotoIds={updateToFavPhotoIds}
+        />
+      )}
+      {favoriteClicked !== false && (
+        <FavoritePhotosModal
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+          photoSelected={photoSelected}
+          onPhotoSelect={onPhotoSelect}
+          favorites={favorites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          photos={photoData}
+          onFavoriteClicked={onFavoriteClicked}
         />
       )}
     </div>
